@@ -1,0 +1,36 @@
+{
+  "name": "create-container",
+  "version": "0.1.0",
+  "description": "Simple application container",
+  "main": "index.js",
+  "scripts": {
+    "test": "scripts/test --browsers Firefox --single-run"
+  },
+  "author": "Ryan Florence <rpflorence@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "6to5": "1.14.10",
+    "6to5-browserify": "1.3.0",
+    "expect": "1.1.0",
+    "karma": "0.12.28",
+    "karma-browserify": "1.0.0",
+    "karma-chrome-launcher": "0.1.7",
+    "karma-cli": "0.0.4",
+    "karma-mocha": "0.1.9",
+    "mocha": "2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rpflorence/create-container.git"
+  },
+  "homepage": "https://github.com/rpflorence/create-container/blob/latest/README.md",
+  "bugs": "https://github.com/rpflorence/create-container/issues",
+  "tags": [
+    "container"
+  ],
+  "keywords": [
+    "DI",
+    "dependency injection",
+    "container"
+  ]
+}
