@@ -41,33 +41,3 @@ describe('createContainer', () => {
   });
 });
 
-describe('a complicated graph', () => {
-  it('works', () => {
-    var routes = (lookup) => 'routes';
-    var FooHandler = (lookup) => {
-      expect(lookup('token')).toEqual('token');
-      expect(lookup('Actions')).toEqual('Actions');
-      return 'FooHandler';
-    };
-    var Actions = (lookup) => {
-      expect(lookup('router')).toEqual('router');
-      return 'Actions';
-    };
-    var router = (lookup) => {
-      expect(lookup('routes')).toEqual('routes');
-      return 'router';
-    };
-    var token = () => 'token';
-
-    var container = createContainer({
-      routes,
-      router,
-      FooHandler,
-      Actions,
-      token
-    });
-
-    expect(container.lookup('router')).toEqual('router');
-  });
-});
-

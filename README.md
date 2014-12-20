@@ -32,6 +32,27 @@ container.lookup('bar'); // => "FOO:BAR"
 Example with React Router
 -------------------------
 
+```js
+// main.js
+var React = require('react');
+var createContainer = require('create-container');
+
+// can register on creation
+var container = createContainer({
+  routes:     require('./routes'),
+  router:     require('./router'),
+  FooHandler: require('./FooHandler'),
+  Actions:    require('./Actions')
+});
+
+// or on the fly
+container.register('token', () => window.__TOKEN__);
+
+// start the app
+container.lookup('router').run((Handler) => {
+  React.render(<Handler/>, document.body);
+});
+```
 
 ```js
 // routes.js
@@ -75,10 +96,9 @@ module.exports = (lookup) => {
 ```js
 // Actions.js
 module.exports = (lookup) => {
-  var router = lookup('router');
   return {
     doSomething () {
-      router.transitionTo('somewhere');
+      lookup('router').transitionTo('somewhere');
     }
   };
 };
@@ -95,28 +115,5 @@ module.exports = (lookup) => {
     location: Router.HistoryLocation
   });
 };
-```
-
-
-```js
-// main.js
-var React = require('react');
-var createContainer = require('create-container');
-
-// can register on creation
-var container = createContainer({
-  routes:     require('./routes'),
-  router:     require('./router'),
-  FooHandler: require('./FooHandler'),
-  Actions:    require('./Actions')
-});
-
-// or on the fly
-container.register('token', () => window.__TOKEN__);
-
-// start the app
-container.lookup('router').run((Handler) => {
-  React.render(<Handler/>, document.body);
-});
 ```
 
