@@ -11,6 +11,7 @@ module.exports = (modules) => {
     resolving[name] = true;
     var lookupDep = (dep) => lookup(dep, name);
     var module = registry[name](lookupDep);
+    resolved[name] = module;
     delete resolving[name];
     return module;
   };
